@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+
+  postgres_db:
+    container_name: postgres_db
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=Salmos89!
+      - POSTGRES_USER=ms_user
+      - POSTGRES_DB=ms_usersdb
+    volumes:
+      - './.docker/db/data:/var/lib/postgresql/data'
+    networks:
+      - db-net
+
+networks:
+  db-net:
+    driver: bridge
