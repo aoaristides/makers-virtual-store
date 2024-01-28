@@ -47,7 +47,7 @@ public class UserJpaEntity implements Serializable {
     @Column(name = "active", nullable = false)
     private boolean active;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<UserAddressJpaEntity> addresses;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP")
