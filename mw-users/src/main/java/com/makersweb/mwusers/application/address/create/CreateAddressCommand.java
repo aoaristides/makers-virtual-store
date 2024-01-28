@@ -1,4 +1,4 @@
-package com.makersweb.mwusers.application.address;
+package com.makersweb.mwusers.application.address.create;
 
 /**
  * @author aaristides

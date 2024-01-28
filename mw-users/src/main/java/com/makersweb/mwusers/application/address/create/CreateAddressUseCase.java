@@ -1,4 +1,4 @@
-package com.makersweb.mwusers.application.address;
+package com.makersweb.mwusers.application.address.create;
 
 import com.makersweb.mwusers.application.UseCase;
 import com.makersweb.mwusers.domain.validation.handler.Notification;

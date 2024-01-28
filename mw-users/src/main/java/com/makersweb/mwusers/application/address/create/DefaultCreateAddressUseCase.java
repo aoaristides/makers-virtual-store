@@ -1,4 +1,4 @@
-package com.makersweb.mwusers.application.address;
+package com.makersweb.mwusers.application.address.create;
 
 import com.makersweb.mwusers.domain.address.Address;
 import com.makersweb.mwusers.domain.address.AddressGateway;
