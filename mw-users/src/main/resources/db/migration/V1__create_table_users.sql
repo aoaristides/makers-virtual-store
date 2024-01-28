@@ -1,7 +1,8 @@
 CREATE TABLE tb_users
 (
-    id              UUID NOT NULL,
+    id              VARCHAR(255) NOT NULL,
     name            VARCHAR(255) NOT NULL,
+    document        VARCHAR(15) NOT NULL,
     mail            VARCHAR(255) NOT NULL,
     phone           VARCHAR(30) NOT NULL,
     birthday        DATE NOT NULL,
