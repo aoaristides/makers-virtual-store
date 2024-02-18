@@ -1,1 +1,0 @@
-package com.makersweb.mwusers.infrastructure;
