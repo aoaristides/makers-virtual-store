@@ -1,0 +1,15 @@
+db:
+  username: ${DATABASE_PG_USERNAME:adm_address}
+  password: ${DATABASE_PG_PASSWORD:Salmos89!}
+  schema: adm_address_db
+  url: ${DATABASE_PG_URL:localhost:5433}
+
+aws:
+  credentials:
+    access-key: localstackKeyId
+    secret-key: Tulipa89!
+  endpoint: http://localhost:4566
+  region: us-east-1
+  sqs:
+    queue:
+      url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/AddressReceived

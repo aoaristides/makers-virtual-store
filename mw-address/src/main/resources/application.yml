@@ -1,0 +1,41 @@
+server:
+  port: 8082
+  compression:
+    enabled: true # Whether response compression is enabled.
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json # Comma-separated list of MIME types that should be compressed.
+    min-response-size: 1024 # Minimum "Content-Length" value that is required for compression to be performed.
+
+spring:
+  cloud:
+    aws:
+      credentials:
+        access-key: ${aws.credentials.access-key}
+        secret-key: ${aws.credentials.secret-key}
+      endpoint: ${aws.endpoint}
+      region:
+        static: ${aws.region}
+      sqs:
+        endpoint: ${aws.sqs.queue.url}
+  datasource:
+    url: jdbc:postgresql://${db.url}/${db.schema}
+    username: ${db.username}
+    password: ${db.password}
+    hikari:
+      auto-commit: false
+      connection-timeout: 250 # ? uma configura??o em milliseconds. O ideal ? manter baixo para que estoure timeout logo e n?o prenda as threads.
+      max-lifetime: 600000 # Tempo m?ximo que uma conex?o pode ficar aberta (10 min) - security.
+      maximum-pool-size: 20 # Mantemos at? no m?x 20 conex?es com o banco de dados. O ideal ? manter baixo mesmo, pois ? algo custoso para o banco gerenciar. https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing
+      minimum-idle: 10
+      pool-name: master
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      "[hibernate.dialect]": org.hibernate.dialect.PostgreSQLDialect
+      "[hibernate.generate_statistics]": false
+      "[hibernate.jdbc.time_zone]": UTC
+      "[hibernate.connection.provider_disables_autocommit]": true
+      # Para aumentar a performance ao m?ximo, desabilitamos o auto-commit e o open-in-view.
+      # https://vladmihalcea.com/why-you-should-always-use-hibernate-connection-provider_disables_autocommit-for-resource-local-jpa-transactions/
